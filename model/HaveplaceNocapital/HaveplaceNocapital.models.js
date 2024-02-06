@@ -47,8 +47,9 @@ const HaveplaceNocapitalSchema = new mongoose.Schema({
   total_funddividends_two: { type: Number, required: false }, // ยอดรวมหลังจากหักเเบ่งปัน  platform  x 20%
   funddividends: {//หักเงินปันผลกองทุน   
     fund: { type: Number, required: false }, //กองทุน x 7.5 %
-    allsale : { type: Number, required: false }, //กองทุน x 7.5 %
+    allsale : { type: Number, required: false }, //all sale x 7.5 %
     employee_bonus: { type: Number, required: false }, //โบนัสนักงาน x 7.5 %
+    total: { type: Number, required: false }, //รวม กองทุน + all sale + โบนัสนักงาน
     total_all: { type: Number, required: false },//ผลรวมจากเอา  total_funddividends -  funddividends
   },
   total_funddividends_eight: { type: Number, required: false }, // ยอดรวมหลังจากหักเเบ่งปัน  platform  x 80%
