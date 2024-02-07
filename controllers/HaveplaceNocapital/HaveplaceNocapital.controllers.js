@@ -25,37 +25,15 @@ const { admin } = require("googleapis/build/src/apis/admin");
 
 exports.create = async (req, res) => {
   try {
-    const remaining = req.body.total_sales - req.body.cost;
-    const platform = remaining * 0.1;
-    const total_funddividends_two = platform * 0.2; // ยอดรวมหลังจากหักเเบ่งปัน  platform  x 20%
-    const total_funddividends_eight = platform * 0.8; // ยอดรวมหลังจากหักเเบ่งปัน  platform  x 80%
-    const funddividends = {
-      fund: total_funddividends_two * 0.075, // 7.5%
-      allsale: total_funddividends_two * 0.075, // 7.5%
-      employee_bonus: total_funddividends_two * 0.05, // 7.5%
-    };
-    const total =
-      funddividends.fund + funddividends.allsale + funddividends.employee_bonus;
-    const total_all =
-      total_funddividends_two -
-      (funddividends.fund +
-        funddividends.allsale +
-        funddividends.employee_bonus);
-    const newData = {
+    await new HaveplaceNocapital({
       ...req.body,
-      remaining: remaining,
-      platform: platform,
-      total_funddividends_two: total_funddividends_two,
-      funddividends: {
-        ...funddividends,
-        total: total,
-        total_all: total_all,
-      },
-      total_funddividends_eight: total_funddividends_eight,
-    };
-    await new HaveplaceNocapital(newData).save();
-    res.status(201).send({ message: "เพิ่มข้อมูลสํญญาสำเร็จ", status: true });
+    }).save();
+    res
+      .status(201)
+      .send({ message: "เพิ่มข้อมูล สัญญามีทุน ไม่มีที่ สำเร็จ", status: true });
   } catch (err) {
-    return res.status(500).send({ status: false, message: err.message });
+    return res
+      .status(500)
+      .send({ status: false, message: "มีบางอย่างผิดพลาด" });
   }
 };

@@ -2,7 +2,13 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 
 const HaveplaceNocapitalSchema = new mongoose.Schema({
-  contract_name: { type: String, required: true },
+  contract_name: { type: String, required: false },
+  contract_head: [
+    {
+      type: String,
+      required: false,
+    },
+  ],
   contract_start: { type: Date, required: false, default: Date.now() },
   contract_end: { type: Date, required: false },
   contract_code: { type: String, required: false },
@@ -40,24 +46,18 @@ const HaveplaceNocapitalSchema = new mongoose.Schema({
       },
     ],
   },
-  total_sales: { type: Number, required: false }, //ยอดขายรวมทั้งหมด
-  cost: { type: Number, required: false }, //ต้นทุน
-  remaining: { type: Number, required: false }, //คงเหลือ
-  platform: { type: Number, required: false }, //เเบ่งปัน platform
-  total_funddividends_two: { type: Number, required: false }, // ยอดรวมหลังจากหักเเบ่งปัน  platform  x 20%
-  funddividends: {//หักเงินปันผลกองทุน   
-    fund: { type: Number, required: false }, //กองทุน x 7.5 %
-    allsale : { type: Number, required: false }, //all sale x 7.5 %
-    employee_bonus: { type: Number, required: false }, //โบนัสนักงาน x 7.5 %
-    total: { type: Number, required: false }, //รวม กองทุน + all sale + โบนัสนักงาน
-    total_all: { type: Number, required: false },//ผลรวมจากเอา  total_funddividends -  funddividends
-  },
-  total_funddividends_eight: { type: Number, required: false }, // ยอดรวมหลังจากหักเเบ่งปัน  platform  x 80%
+  body: [
+    {
+      no: { type: String, required: false },
+      title: { type: String },
+      subtitle: { type: String, required: false },
+      detail: [{ type: String, required: false }],
+    },
+  ],
   status: [
     {
       name: { type: String, required: false },
       date: { type: Date, required: false, default: Date.now() },
-      sender: { type: String, required: false },
     },
   ],
   refer_doc: [
