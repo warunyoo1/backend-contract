@@ -30,7 +30,10 @@ exports.create = async (req, res) => {
     }).save();
     res
       .status(201)
-      .send({ message: "เพิ่มข้อมูล สัญญามีทุน ไม่มีที่ สำเร็จ", status: true });
+      .send({
+        message: "เพิ่มข้อมูล สัญญามีทุน ไม่มีที่ สำเร็จ",
+        status: true,
+      });
   } catch (err) {
     return res
       .status(500)
