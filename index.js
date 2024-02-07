@@ -24,8 +24,8 @@ app.get("/", (req, res) => {
   res.send({ data: "hello world test   sdsdsadda 115zzz6\n5s5s5s5s5s5" });
 });
 
-//eContract
-app.use("/contract", require("./routes/doc_a"));
+// //eContract
+// app.use("/contract", require("./routes/doc_a"));
 
 const port = process.env.PORT || 9987;
 app.listen(port, () => {
