@@ -9,6 +9,7 @@ const HaveplaceNocapitalSchema = new mongoose.Schema({
       required: false,
     },
   ],
+  contract_sub_head: { type: String, required: false },
   contract_start: { type: Date, required: false, default: Date.now() },
   contract_end: { type: Date, required: false },
   contract_code: { type: String, required: false },
