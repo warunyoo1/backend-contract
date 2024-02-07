@@ -13,11 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-//
-const prefix = "/Contract";
-
 // สัญญา มีที่ไม่มีทุน
-app.use(prefix + "/HaveplaceNocapital", require("./routes/contract2/index"));
+app.use("/HaveplaceNocapital", require("./routes/contract2/index"));
 
 //test-sample
 app.get("/", (req, res) => {
